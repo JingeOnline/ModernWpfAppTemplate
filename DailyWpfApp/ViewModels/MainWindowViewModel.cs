@@ -11,13 +11,9 @@ namespace DailyWpfApp.ViewModels
     {
         [ObservableProperty]
         private bool _NavigationPanelIsOpen;
-        [ObservableProperty]
-        private bool _CanNavigateback;
-        private readonly INavigationService _navigationService;
-
-        public MainWindowViewModel(INavigationService navigationService)
+        public MainWindowViewModel()
         {
-            _navigationService = navigationService;
+
         }
         [RelayCommand]
         public void HumbergerMenuClicked()
@@ -25,20 +21,5 @@ namespace DailyWpfApp.ViewModels
             NavigationPanelIsOpen = !NavigationPanelIsOpen;
         }
 
-        [RelayCommand]
-        public void Back()
-        {
-            _navigationService.NavigateBack();
-        }
-
-        [RelayCommand]
-        public void Forward()
-        {
-            _navigationService.NavigateForward();
-        }
-        internal void UpdateCanNavigateBack()
-        {
-            CanNavigateback = _navigationService.IsBackHistoryNonEmpty();
-        }
     }
 }

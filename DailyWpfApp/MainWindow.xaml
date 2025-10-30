@@ -47,8 +47,7 @@
                     AutomationProperties.Name="Back"
                     Background="Transparent"
                     BorderBrush="Transparent"
-                    Command="{Binding VM.BackCommand}"
-                    IsEnabled="{Binding VM.CanNavigateback}"
+                    Click="BackButton_Click"
                     WindowChrome.IsHitTestVisibleInChrome="True"
                     ToolTipService.ToolTip="Back">
                     <Button.Resources>
@@ -197,7 +196,9 @@
                     BorderBrush="{DynamicResource CardStrokeColorDefaultBrush}"
                     BorderThickness="1"
                     CornerRadius="8,0,0,0">
-                    <Frame x:Name="RootContentFrame" Navigated="RootContentFrame_Navigated" NavigationUIVisibility="Hidden"/>
+                    <Frame x:Name="RootContentFrame" Navigated="RootContentFrame_Navigated" 
+                           NavigationUIVisibility="Hidden" />
+                           <!--MouseDown="Window_MouseDown"--> 
                 </Border>
             </Grid>
         </Grid>
