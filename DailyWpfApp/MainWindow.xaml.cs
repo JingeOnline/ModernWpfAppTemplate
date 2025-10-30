@@ -24,7 +24,7 @@ namespace DailyWpfApp
         //这里定义ViewModel属性，在XAML中绑定时，绑定VM的所有属性，都要加上ViewModel.前缀
         public MainWindowViewModel VM { get; }
         private readonly INavigationService _navigationService;
-        public Type CurrentPage;
+        public Type CurrentPageType;
 
         public MainWindow(MainWindowViewModel viewModel, IServiceProvider serviceProvider, INavigationService navigationService)
         {
@@ -56,24 +56,16 @@ namespace DailyWpfApp
             );
         }
 
-        //导航完成后，更新ViewModel中的CanNavigateBack属性
+        //导航完成后，更新BackButton的可用性，并更新导航列表的选择
         private void RootContentFrame_Navigated(object sender, NavigationEventArgs e)
         {
-            //VM.UpdateCanNavigateBack();
-            if (RootContentFrame.CanGoBack)
-            {
-                BackButton.IsEnabled = true;
-            }
-            else
-            {
-               BackButton.IsEnabled = false;
-            }
+            BackButton.IsEnabled = RootContentFrame.CanGoBack;
 
-                //在导航后，更新导航列表的选择
-                Type type = e.Content!.GetType()!;
-            if (CurrentPage != type)
+            //在导航后，更新导航列表的选择
+            Type type = e.Content!.GetType()!;
+            if (CurrentPageType != type)
             {
-                CurrentPage = type;
+                CurrentPageType = type;
                 foreach (ListBoxItem item in NavigationListBox.Items)
                 {
                     string? tag = (string?)item.Tag;
@@ -102,7 +94,7 @@ namespace DailyWpfApp
             if (selectedItem != null)
             {
                 string? tag = (string?)selectedItem.Tag;
-                if (tag != null && tag!=CurrentPage.FullName)
+                if (tag != null && tag != CurrentPageType.FullName)
                 {
                     //把文字转换为Type类型，然后导航到对应的页面。后面的叹号是告诉编译器，这个值不为null。
                     Type pageType = Type.GetType(tag)!;
