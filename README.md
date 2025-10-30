@@ -1,4 +1,4 @@
-# DailyWpfApp
+# WPF应用现代化模板
 
 参考项目：https://github.com/microsoft/WPF-Samples/tree/main/Sample%20Applications/WPFGallery ，简化了该项目中复杂的树形结构导航和页面模板部分。
 
