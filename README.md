@@ -17,7 +17,6 @@
        <Application.Resources>
             <ResourceDictionary>
                 <ResourceDictionary.MergedDictionaries>
-                    <ResourceDictionary Source="Styles/MainWindowStyle.xaml" />
                     <ResourceDictionary Source="pack://application:,,,/PresentationFramework.Fluent;component/Themes/Fluent.xaml" />
                 </ResourceDictionary.MergedDictionaries>
             </ResourceDictionary>
