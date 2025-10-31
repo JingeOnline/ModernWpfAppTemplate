@@ -106,6 +106,7 @@ namespace DailyWpfApp
 
         private void SettingsButton_Click(object sender, RoutedEventArgs e)
         {
+            NavigationListBox.SelectedItem = null;
             _navigationService.Navigate(typeof(SettingsPage));
         }
 

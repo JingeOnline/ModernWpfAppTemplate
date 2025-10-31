@@ -91,7 +91,7 @@
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
                 <!--导航栏-->
-                <Grid Grid.Column="0" Background="LightGray">
+                <Grid Grid.Column="0" >
                     <Grid.Style>
                         <Style TargetType="Grid">
                             <Setter Property="Width" Value="250" />
@@ -179,11 +179,21 @@
                     <!--设置按钮-->
                     <Button
                         x:Name="SettingsButton"
-                        Grid.Row="2"
-                        Click="SettingsButton_Click">
+                        Grid.Row="2" HorizontalAlignment="Stretch"
+                        Click="SettingsButton_Click" HorizontalContentAlignment="Left">
                         <StackPanel Orientation="Horizontal">
-                            <TextBlock x:Name="SettingsIcon" Margin="0,4,0,0" FontFamily="{StaticResource SymbolThemeFontFamily}">&#xE713;</TextBlock>
-                            <TextBlock Margin="8,0,0,0" Text="Settings" />
+                            <TextBlock Margin="4,4,0,4" x:Name="SettingsIcon" Style="{StaticResource HamburgerMenuIconTextBlockStyle}">&#xE713;</TextBlock>
+                            <TextBlock Text="Settings" >
+                                <TextBlock.Style>
+                                    <Style TargetType="TextBlock" BasedOn="{StaticResource HamburgerMenuLabelTextBlockStyle}">
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding VM.NavigationPanelIsOpen, RelativeSource={RelativeSource AncestorType=Window}}" Value="False">
+                                                <Setter Property="Visibility" Value="Collapsed" />
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </TextBlock.Style>
+                            </TextBlock>
                         </StackPanel>
                     </Button>
                 </Grid>
