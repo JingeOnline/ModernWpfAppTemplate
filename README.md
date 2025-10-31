@@ -5,7 +5,7 @@
 特点
 1. 汉堡菜单+页面导航
 2. WinUI3样式的窗口标题栏
-3. 支持WinUI3的主题切换
+3. 支持WinUI3的明暗主题切换，支持使用系统主题颜色
 
        //在SettingPage.xaml.cs文件中，实现主题切换。该功能还在实验阶段，后续.net版本该功能是否保留不确定。
        #pragma warning disable WPF0001
